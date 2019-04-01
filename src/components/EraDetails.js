@@ -23,7 +23,8 @@ class EraDetails extends Component {
 
   componentDidMount() {
     axios.get(`http://localhost:3000/eras/${this.props.match.params.id}`).then((response) => {
-      this.setState({ eras })
+      console.log(response)
+      this.setState({ eras: response })
     })
   }
 

@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 class EraListItem extends Component {
   render() {
     return (
-      <Link to={`/eradetails/${this.props.id}`} key={this.props.id}>
+      <Link to={`/eras/${this.props.id}`} key={this.props.id} className="home-page">
         <li>
-          <p>{this.props.era}</p>
+          <h2>{this.props.era}</h2>
         </li>
       </Link>
     )
