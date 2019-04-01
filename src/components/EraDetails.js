@@ -3,17 +3,29 @@ import { Link } from 'react-router-dom'
 import Form from 'react-jsonschema-form'
 import axios from 'axios'
 
+// Create a global variable to create a class for Eras and establish props.
+// const Composer = props => {}
+// Axios call to get data from localhost API
+// const Era
+// Create a global delete function --> const removeComposer = event => {}
+
+// Confirm by Gavin - Is the reason for creating a global Composer function in order to reload list after item is deleted???
+
 class EraDetails extends Component {
   state = {
     name: '',
-    eras: {
-      composers: []
-    }
+    eras: []
+    // eras: {
+    //   composers: []
+    // }
+    // Nested states necessary because of the relationship of many composers to one era???
   }
 
-  // componentDidMount() {
-  //   axios.get(`http://localhost:3000/eras/${this.props.match.params.id}`)
-  // }
+  componentDidMount() {
+    axios.get(`http://localhost:3000/eras/${this.props.match.params.id}`).then((response) => {
+      this.setState({ eras })
+    })
+  }
 
   render() {
     // const schema = {

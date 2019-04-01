@@ -7,9 +7,9 @@ import EraListItem from './EraListItem'
 
 class EraList extends Component {
   state = {
-    composers: [],
     name: '',
-    eras: []
+    eras: [],
+    composers: []
   }
 
   componentDidMount() {
