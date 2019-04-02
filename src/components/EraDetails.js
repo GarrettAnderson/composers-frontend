@@ -6,15 +6,16 @@ import EraListItem from './EraListItem'
 import EraList from './EraList'
 
 // Create a global variable to create a class for Eras and establish props.
-// const Composer = (props) => {
-//   console.log('the composer constructor??')
-//   axios.get(`{http://localhost:3000/eras/}`)
-// }
-// Axios call to get data from localhost API
-// const Era
 // Create a global delete function --> const removeComposer = event => {}
-
-// Confirm by Gavin - Is the reason for creating a global Composer function in order to reload list after item is deleted???
+// After Delete function executes, call the composers list for that specific era
+const Composer = (props) => {
+  console.log('the composer constructor??')
+  // Axios call to get data from localhost API
+  axios.get(`{http://localhost:3000/eras/${this.props.match.params.id}}`).then((response) => {
+    console.log(response)
+    this.setState({ eras: response.data })
+  })
+}
 
 class EraDetails extends Component {
   state = {
@@ -38,36 +39,44 @@ class EraDetails extends Component {
     })
   }
 
+  renderEraComposers = () => {
+    return (
+      <ul className="composers-list">
+        <li>Composer</li>
+        <li>Composer</li>
+        <li>Composer</li>
+        <li>Composer</li>
+        <li>Composer</li>
+      </ul>
+    )
+  }
+
   render() {
-    // const schema = {
-    //   title: 'Composers',
-    //   type: 'object',
-    //   required: [ 'name' ],
-    //   properties: {
-    //     name: { type: 'string', title: 'Name', default: '' },
-    //     birth_date: { type: 'string', format: 'date', title: 'Birth Date', default: '' },
-    //     death_date: { type: 'string', format: 'date', title: 'Death Date', default: '' },
-    //     famous_piece: { type: 'string', title: 'Famous Piece', default: '' },
-    //     description: { type: 'string', title: 'Description', default: '' }
-    //   }
-    // }
+    const schema = {
+      title: 'Composers',
+      type: 'object',
+      required: [ 'name' ],
+      properties: {
+        name: { type: 'string', title: 'Name', default: '' },
+        birth_date: { type: 'string', format: 'date', title: 'Birth Date', default: '' },
+        death_date: { type: 'string', format: 'date', title: 'Death Date', default: '' },
+        famous_piece: { type: 'string', title: 'Famous Piece', default: '' },
+        description: { type: 'string', title: 'Description', default: '' }
+      }
+    }
     return (
       <section>
-        {/* <h1>{}</h1>
+        <h1>{this.state.eras.name}</h1>
         <span>
-          {this.state.era.begin} - {this.props.end}
-        </span> */}
-        <ul>
-          <li>Composer</li>
-          <li>Composer</li>
-          <li>Composer</li>
-          <li>Composer</li>
-          <li>Composer</li>
-        </ul>
+          ( {this.state.eras.date_beg} CE - {this.state.eras.date_end} CE )
+        </span>
+
+        <h2>Well Known {this.state.eras.name} Composers:</h2>
+        {this.renderEraComposers()}
 
         <section className="add-composer-form">
           <h3>Add a Composer:</h3>
-          {/* <Form schema={schema} onSubmit={this.addComposerToEra} /> */}
+          <Form schema={schema} onSubmit={this.addComposerToEra} />
         </section>
       </section>
     )
