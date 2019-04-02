@@ -14,7 +14,7 @@ class EraList extends Component {
 
   componentDidMount() {
     // this.showAllEras()
-    axios.get('http://localhost:3000/eras').then((response) => {
+    axios.get('http://localhost:3000/api/eras').then((response) => {
       console.log(response)
       this.setState({
         eras: response.data
@@ -69,6 +69,7 @@ class EraList extends Component {
                 key={era.id}
                 id={era.id}
                 era={era}
+                name={era.name}
                 begin={era.date_beg}
                 end={era.date_end}
                 description={era.description}

@@ -21,8 +21,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={EraList} />
           {/* <Route exact path="/eras/new" component={CreateCohort} /> */}
-          <Route exact path="/eras/:id" component={EraListItem} />
-          <Route exact path="/eras/edit/:id" component={EraDetails} />
+          <Route exact path="/eras/:id" component={EraDetails} />
+          {/* <Route exact path="/eras/edit/:id" component={EraDetails} /> */}
           {/*  <Route exact path="/cohorts/:cohort_id/students/:student_id" component={StudentDetails} />  */}
         </Switch>
         {/* </div> */}

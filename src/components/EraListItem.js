@@ -6,9 +6,10 @@ class EraListItem extends Component {
   render() {
     return (
       <Link to={`/eras/${this.props.id}`} key={this.props.id} className="home-page">
-        <li>
+        <h2>{this.props.name}</h2>
+        {/* <li>
           <h2> {this.props.era.name}</h2>
-        </li>
+        </li> */}
       </Link>
     )
   }

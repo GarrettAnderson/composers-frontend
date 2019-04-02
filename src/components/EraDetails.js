@@ -19,9 +19,10 @@ import EraList from './EraList'
 class EraDetails extends Component {
   state = {
     name: '',
-    eras: {
-      composers: []
-    }
+    eras: {}
+    // eras: {
+    //   composers: []
+    // }
   }
   // Nested states necessary because of the relationship of many composers to one era???
 
@@ -31,7 +32,7 @@ class EraDetails extends Component {
 
   loadEraDetails = () => {
     console.log('page has loaded!?!?')
-    axios.get(`http://localhost:3000/eras/${this.props.era.id}`).then((response) => {
+    axios.get(`http://localhost:3000/api/eras/${this.props.match.params.id}`).then((response) => {
       console.log(response)
       this.setState({ eras: response.data })
     })
@@ -52,10 +53,10 @@ class EraDetails extends Component {
     // }
     return (
       <section>
-        <h1>{this.props.era.name}</h1>
+        {/* <h1>{}</h1>
         <span>
-          {this.props.era.begin} - {this.props.era.end}
-        </span>
+          {this.state.era.begin} - {this.props.end}
+        </span> */}
         <ul>
           <li>Composer</li>
           <li>Composer</li>
