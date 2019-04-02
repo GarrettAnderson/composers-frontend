@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import EraList from './components/EraList'
 import EraDetails from './components/EraDetails'
 import EraListItem from './components/EraListItem'
+import ComposerDetails from './components/ComposerDetails'
 
 // import Form from 'react-jsonschema-form'
 
@@ -22,8 +23,11 @@ class App extends Component {
           <Route exact path="/" component={EraList} />
           {/* <Route exact path="/eras/new" component={CreateCohort} /> */}
           <Route exact path="/eras/:id" component={EraDetails} />
+          {/* <Route exact path="/composers/:id" component={ComposerDetails} /> */}
+          <Route exact path="/eras/:era_id/composers/:composer_id" component={ComposerDetails} />
+
+          {/* <Route exact path="/eras/:era_id/composers/:composer_id" component={ComposerDetails} />           */}
           {/* <Route exact path="/eras/edit/:id" component={EraDetails} /> */}
-          {/*  <Route exact path="/cohorts/:cohort_id/students/:student_id" component={StudentDetails} />  */}
         </Switch>
         {/* </div> */}
       </Router>

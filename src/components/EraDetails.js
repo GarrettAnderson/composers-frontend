@@ -20,10 +20,10 @@ const Composer = (props) => {
 class EraDetails extends Component {
   state = {
     name: '',
-    eras: {}
-    // eras: {
-    //   composers: []
-    // }
+    // eras: {}
+    eras: {
+      composers: []
+    }
   }
   // Nested states necessary because of the relationship of many composers to one era???
 
@@ -42,11 +42,24 @@ class EraDetails extends Component {
   renderEraComposers = () => {
     return (
       <ul className="composers-list">
-        <li>Composer</li>
-        <li>Composer</li>
-        <li>Composer</li>
-        <li>Composer</li>
-        <li>Composer</li>
+        {this.state.eras.composers.map((composer) => {
+          console.log(composer)
+          return (
+            <li key={composer.id}>
+              <figure>
+                <img src={require('../images/mozart.jpg')} />
+                <h5>{composer.name}</h5>
+                <span>
+                  ({composer.birth_date} to {composer.death_date})
+                </span>
+                <p>
+                  <b>Famous Piece:</b> {composer.famous_piece}
+                </p>
+                <figcaption>{composer.description}</figcaption>
+              </figure>
+            </li>
+          )
+        })}
       </ul>
     )
   }
