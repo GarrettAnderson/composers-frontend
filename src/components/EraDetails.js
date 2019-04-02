@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom'
 import Form from 'react-jsonschema-form'
 import axios from 'axios'
 import EraListItem from './EraListItem'
+import EraList from './EraList'
 
 // Create a global variable to create a class for Eras and establish props.
-const Composer = (props) => {}
+// const Composer = (props) => {
+//   console.log('the composer constructor??')
+//   axios.get(`{http://localhost:3000/eras/}`)
+// }
 // Axios call to get data from localhost API
 // const Era
 // Create a global delete function --> const removeComposer = event => {}
@@ -15,23 +19,22 @@ const Composer = (props) => {}
 class EraDetails extends Component {
   state = {
     name: '',
-    eras: [],
-    composers: []
-    // eras: {
-    //   composers: []
-    // }
-    // Nested states necessary because of the relationship of many composers to one era???
+    eras: {
+      composers: []
+    }
   }
-  componentDidMount() {}
+  // Nested states necessary because of the relationship of many composers to one era???
 
-  listEraDetails = () => {
+  componentDidMount() {
+    this.loadEraDetails()
+  }
+
+  loadEraDetails = () => {
     console.log('page has loaded!?!?')
-    axios.get(`http://localhost:3000/eras/${this.props.match.params.id}`).then((response) => {
-      this.setState({ eras: response })
+    axios.get(`http://localhost:3000/eras/${this.props.era.id}`).then((response) => {
+      console.log(response)
+      this.setState({ eras: response.data })
     })
-    //   console.log(response)
-    //   this.setState({ eras: response })
-    // })
   }
 
   render() {
@@ -49,9 +52,9 @@ class EraDetails extends Component {
     // }
     return (
       <section>
-        <h1>{this.props.era}</h1>
+        <h1>{this.props.era.name}</h1>
         <span>
-          {this.props.begin} - {this.props.end}
+          {this.props.era.begin} - {this.props.era.end}
         </span>
         <ul>
           <li>Composer</li>

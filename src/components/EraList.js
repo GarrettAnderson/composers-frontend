@@ -13,17 +13,23 @@ class EraList extends Component {
   }
 
   componentDidMount() {
-    this.showAllEras()
-  }
-
-  showAllEras = () => {
+    // this.showAllEras()
     axios.get('http://localhost:3000/eras').then((response) => {
-      console.log(response.data)
+      console.log(response)
       this.setState({
         eras: response.data
       })
     })
   }
+
+  // showAllEras = () => {
+  //   axios.get('http://localhost:3000/eras').then((response) => {
+  //     console.log(response)
+  //     this.setState({
+  //       eras: response.data
+  //     })
+  //   })
+  // }
 
   // handleSearchChange = (event) => {
   //   const name = event.target.value
@@ -62,13 +68,13 @@ class EraList extends Component {
               <EraListItem
                 key={era.id}
                 id={era.id}
-                era={era.name}
+                era={era}
                 begin={era.date_beg}
                 end={era.date_end}
                 description={era.description}
               />
             )
-            // return <ComposerListing key={composer.id} id={composer.id} name={composer.name} />
+            // return <ComposerListing key={composer.id} id={composer.id} name={composer.name} /> */}
           })}
         </ul>
       </section>
